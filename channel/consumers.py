@@ -3,12 +3,12 @@ from channels.exceptions import StopConsumer
 from asgiref.sync import async_to_sync
 # from channels.db import database_sync_to_async
 import json
-from channel.models import ChatMessages, Groupname
 from datetime import datetime
 
 class MyWebsocketConsumer(WebsocketConsumer):
     el = ''
     def connect(self):
+        from channel.models import ChatMessages, Groupname
         self.accept()
         self.groupname = self.scope['url_route']['kwargs']['groupname']
         async_to_sync(self.channel_layer.group_add)(self.groupname,self.channel_name)
@@ -54,6 +54,7 @@ class MyWebsocketConsumer(WebsocketConsumer):
                         })
                     
     def receive(self, text_data=None, bytes_data=None):
+        from channel.models import ChatMessages, Groupname
         if text_data == 'close':
             self.close(1000)
         elif text_data == 'private_false':
@@ -105,6 +106,7 @@ class MyWebsocketConsumer(WebsocketConsumer):
         self.send(text_data=event['text'])
 
     def disconnect(self, code):
+        from channel.models import ChatMessages, Groupname
         group = Groupname.objects.get(group=self.groupname)
         member = eval(group.member)
         index = member.index(str(self.scope['user']))
