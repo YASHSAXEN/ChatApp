@@ -94,7 +94,7 @@ def logoutpage(request):
 
 def Groupmessage(groupname,file_url,user):
     print(groupname,file_url,user)
-    layer_name = get_channel_layer(alias='default')
+    layer_name = get_channel_layer()
     user_data = {'user':user,'status':'image-uploaded-done',"url":file_url}
     user_data_json = json.dumps(user_data)
     async_to_sync(layer_name.group_send)(
