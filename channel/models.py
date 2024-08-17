@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 # Create your models here.
 class Groupname(models.Model):
@@ -7,7 +6,7 @@ class Groupname(models.Model):
     private = models.BooleanField(default=False)
     member_count = models.IntegerField(default=0)
     member = models.TextField(blank=True,default='')
-    last_active = models.DateTimeField(blank=True,default=timezone.now())
+    last_active = models.CharField(blank=True,default=None)
 
     def __str__(self):
         return self.group

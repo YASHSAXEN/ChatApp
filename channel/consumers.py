@@ -112,7 +112,7 @@ class MyWebsocketConsumer(WebsocketConsumer):
         group.member = str(member)
         group.member_count = len(member)
         if len(member) == 0:
-            group.last_active = datetime.now()
+            group.last_active = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         group.save()
         if code == 1000:
             user_data = {'user':str(self.scope['user']),'status':'close','ct':len(member)}

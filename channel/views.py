@@ -26,7 +26,7 @@ def homepage(request,groupname):
             chat = ChatMessages.objects.filter(groupname=group.id)
         else:
             present_time = datetime.now()
-            last_active_time = group.last_active
+            last_active_time = datetime.strptime(group.last_active,'%Y-%m-%d %H:%M:%S')
             # Calculate the difference
             print(present_time)
             print(last_active_time)
