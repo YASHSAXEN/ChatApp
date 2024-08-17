@@ -32,6 +32,7 @@ DEBUG = bool(os.getenv('DEBUG'))
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','pokichat.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://pokichat.onrender.com']
 
 # Application definition
 
