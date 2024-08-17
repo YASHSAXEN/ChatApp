@@ -8,4 +8,4 @@ pip install -r requirements.txt
 # Convert static asset files
 python manage.py collectstatic --no-input
 
-python manage.py deleteorphanedmedia
+# python manage.py deleteorphanedmedia
