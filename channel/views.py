@@ -11,8 +11,8 @@ from asgiref.sync import async_to_sync
 from datetime import datetime
 # Create your views here.
 
-def index(request):
-    return redirect('/login/')
+# def index(request):
+#     return redirect('/login/')
 
 @login_required
 def homepage(request,groupname):
