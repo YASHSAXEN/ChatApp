@@ -21,6 +21,7 @@ for (let index = 0; index < div_element.length; index++) {
 
 
 websocket.addEventListener('open',(event)=>{
+    console.log('open',event)
     setTimeout(()=>{
         scrolltobottom()
     },2000)
