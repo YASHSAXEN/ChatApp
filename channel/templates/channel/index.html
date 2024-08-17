@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static "channel/css/login.css" %}">
+    <link rel="stylesheet" href="{% static 'channel/css/style.css' %}">
+    <style>
+        .btn:hover{
+            scale:1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+              <p id="logo">PokiChat</p>
+            </div>
+            <div class="buttons">
+              <abbr title="Logout"><a href="{% url "logout" %}"><button id="logout-button" class="btn" style="width: 50px;height:50px;border-radius:50%;font-size:23px;">{{user|capfirst}}</button></a></abbr>
+            </div>
+        </header>
+        <div style='display:flex; flex-direction:column; width:100%; justify-content:space-between;margin-top:30px; align-items:center;gap:10px;' class='normal1'>
+            <div style='display:flex; width:100%; justify-content:center;align-items:center;'>
+                <h2>Group Name: <span id='groupnam'>{{groupname.group}}</span></h2>
+            </div>
+            <div style='display:flex; width:100%; justify-content:center;gap:20px; align-items:center;'>
+                <div><p class='counted'>Members Count: <span id='count' class='counted'>{{groupname.member_count}}</span> </p> </div>
+                <div style='display:flex;align-items:center;gap:3px;' id='private-container'>
+                    <label for="private" class='label-private'>Private:</label>
+                    <input type="checkbox" name="" id="private" checked={{groupname.private}}>
+                </div>
+            </div>
+        </div>
+        <div style='width: 100%;height: max-content;display: flex;justify-content:center;' class='normal2'>
+            <div style='display: flex;width: 50%;height: max-content;align-items:center;flex-direction:column;gap:10px;margin-top: 20px;margin-bottom:20px;'>
+                <div class="chat-box">
+                    {% for message in chat %}
+                        {% if message.message %}
+                        <div class="message-div">
+                            <p>{{message.user}} <span style='font-size:12px;'>({{message.message_time}})</span>:</p>
+                            <p class='actual-message'>{{message.message}}</p>
+                        </div>
+                        {% else %}
+                        <div class="message-div">
+                            <p>{{message.user}}:({{message.message_time}})</p>
+                            <p class='actual-message' style='padding: 0px;'>
+                                <abbr title="Click to open the image"><a href="{{message.file.url}}" target='_blank'><img src="{{message.file.url}}" alt="" width="100%" height="100%" loading="lazy" class="images" ></a></abbr>
+                            </p>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div style='width: 100%;display:flex;justify-content:center;'>
+                <div style='display: flex;width: 90%; position: relative;'>
+                    <abbr title="Upload Image"><i class="fa-solid fa-cloud-arrow-up upload"></i></abbr>
+                    <input type="text" placeholder='Type your message here...' id='message' autocomplete='off' required>
+                    <i class="fa-solid fa-paper-plane submit-button" id='button' style='display:flex;justify-content:center;align-items:center;width:8%;background-color:lightgreen;color:white;cursor: pointer;border-top-right-radius: 6px;border-bottom-right-radius: 6px;'></i>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="file-upload-container">
+            <i class="fa-solid fa-xmark cancel" style='font-size:18px;position: absolute;right:10px;top:5px; cursor: pointer;'></i>
+            <form action="" method='post' enctype='multipart/form-data'>
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                {% endfor %}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <footer>
+            <div style='display:flex; gap:20px; height:30px; font-size:20px; cursor: pointer;'>
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div style='font-size:15px;'>
+              All rights are reserved by Yash Saxena, &copy; copywrite - 2024
+            </div>
+          </footer>
+    </div>
+    <script src="{% static 'channel/js/channel.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'channel/css/login.css' %}">
+    <style>
+      *{
+        overflow-x:hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo-container">
+          <p id="logo">PokiChat</p>
+        </div>
+        <div class="buttons">
+            <a href="{% url "login" %}"><button id="login-button" class="btn">Login</button></a>
+            <a href="{% url "signup" %}"><button id="signup-button" class="btn">SignUp</button></a>
+        </div>
+      </header>
+      <div class="form-container" style='margin-top:40px'>
+        <p class='login-header'>SignUp Page</p>
+        <form action="" method="post">
+          {% csrf_token %}
+          {% if messages %}
+          <div style="display:flex;justify-content:center;align-items:center;width: 100%;height: 30px;">
+             {% for message in messages %}
+            <span style="color: green">{{message}}</span>
+            {% endfor %} 
+          </div>
+          {% endif %}
+          {% for field in form %}
+          <div>
+            {% for error in field.errors %}
+            <span style="color: red">{{error}}</span> <br />
+            {% endfor %}
+          </div>
+          <div>{{field.label}}</div>
+          <div>{{field}}</div>
+          {% endfor %}
+          <input type="submit" value="Submit" class='field' style="margin-top:10px;"/>
+          <div>
+            <p style="font-size:14px;">If you have an account: <a href="{% url 'login' %}" style="text-decoration:none;">Login</a></p>
+          </div>
+        </form>
+      </div>
+      <footer>
+        <div style='display:flex; gap:20px; height:30px; font-size:20px; cursor: pointer;'>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <div style='font-size:15px;'>
+          All rights are reserved by Yash Saxena, &copy; copywrite - 2024
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
