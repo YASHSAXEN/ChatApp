@@ -1,6 +1,6 @@
 var groupname = document.querySelector('#groupnam');
-// var websocket = new WebSocket(`ws://${window.location.host}/ws/wsc/${groupname.innerHTML}`);
-var websocket = new WebSocket(`wss://${window.location.host}/ws/wsc/${groupname.innerHTML}`);
+var websocket = new WebSocket(`ws://${window.location.host}/ws/wsc/${groupname.innerHTML}`);
+// var websocket = new WebSocket(`wss://${window.location.host}/ws/wsc/${groupname.innerHTML}`);
 var button = document.querySelector('#button');
 var chat_box = document.querySelector('.chat-box');
 var close = document.querySelector('#logout-button');
