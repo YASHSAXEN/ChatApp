@@ -6,7 +6,7 @@ class Groupname(models.Model):
     private = models.BooleanField(default=False)
     member_count = models.IntegerField(default=0)
     member = models.TextField(blank=True,default='')
-    last_active = models.CharField(blank=True,default=None)
+    last_active = models.CharField(blank=True,default=None,max_length=150)
 
     def __str__(self):
         return self.group
