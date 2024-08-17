@@ -145,7 +145,7 @@ if DEBUG:
 else:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     CLOUDINARY_STORAGE = {
-        "CLOUDINARY_URL":"cloudinary://126342471547662:Cr2RfhiuWFG3gbGReYnTYPdPlhI@dwfrwevz8"
+        "CLOUDINARY_URL":os.getenv('CLOUDINARY_URL')
     }
 
 
