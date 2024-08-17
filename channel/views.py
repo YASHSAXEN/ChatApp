@@ -4,18 +4,20 @@ from channel.forms import SignUp, LoginForm, FileForm
 from django.contrib import messages
 # from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from channel.models import ChatMessages,Groupname
 from channels.layers import get_channel_layer
 import json
 from asgiref.sync import async_to_sync
 from datetime import datetime
 # Create your views here.
 
+
+
 def index(request):
     return render(request,'channel/home.html')
 
 @login_required
 def homepage(request,groupname):
+    from channel.models import ChatMessages,Groupname
     chat = None
     user_name = request.user.username[0]
     group, created = Groupname.objects.get_or_create(group=groupname)
@@ -63,6 +65,7 @@ def signup(request):
     return render(request,'channel/signup.html',{'form':form})
 
 def loginpage(request):
+    from channel.models import ChatMessages,Groupname
     form = LoginForm()
     if request.method =='POST':
         print(request.POST)
