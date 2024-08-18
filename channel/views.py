@@ -10,10 +10,17 @@ from asgiref.sync import async_to_sync
 from datetime import datetime
 # Create your views here.
 
-
+def is_loggedin(request):
+    status = request.user.is_authenticated
+    if status:
+        show = request.user.username[0].upper()
+    else:
+        show = None  
+    return status,show
 
 def index(request):
-    return render(request,'channel/home.html')
+    status,show = is_loggedin(request)  
+    return render(request,'channel/home.html',{'show':show,'status':status})
 
 @login_required
 def homepage(request,groupname):

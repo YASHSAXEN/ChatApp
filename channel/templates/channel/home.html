@@ -1,11 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-</head>
-<body>
-    <h1>Home Page</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}PokiChat-Home{% endblock title %}
+
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'channel/css/home.css' %}">
+{% endblock style %}
+
+{% block content %}
+<main class="main-container">
+    <div class='herosection'>
+        <div class="left-content">
+            <div style='display: flex; flex-direction:column;gap:30px;width: 50%;height: 75%;justify-content: flex-end;margin-top:20px;align-items:center;' class='herosectionmaindiv'>
+                <p class='herosectionheading'>PokiChat</p>
+                <p class='herosectioncontent' style='line-height:23px;'>Create and customize private chat groups with ease. Share messages and images with friends in a secure, ephemeral space. Once the last member leaves, the group vanishes—ensuring your conversations remain just between you and your friends. Experience the freedom of private, self-destructing chats today!</p>
+                {% if not status %}
+                <a href="{% url 'signup' %}"><button class='herosectionbutton'>Join Us</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="aboutus" id='about'>
+        <div class='innerabout'>
+            <p class='abouheading'>About Us</p>
+            <p class='aboucontent'>
+                Pokichat is here to make chatting with friends more private and temporary. With our app, you can create private groups where you share messages and images that disappear once the last person leaves. <br><br>
+
+                We believe in giving you a space where your conversations are safe and only for you and your friends. No need to worry about your messages being stored forever.<br><br>
+
+                Our goal is to keep things simple and secure, making sure your chats are easy to use and private. Thanks for choosing Pokichat. We're excited to help you connect in a fresh, new way!
+            </p>
+        </div>
+    </div>
+    <div class="howitworks" id="working">
+        <div class="innerwork">
+            <p class="workheading">
+                How it Works
+            </p>
+            <div class='workcontainer'>
+                <p style='font-size:25px;font-weight:bold;font-style:italic;text-decoration:underline;'>Create Your Group:</p>
+                <p> Start by setting up a private group for you and your friends. Choose who gets to join and customize your chat space.
+                </p>
+            </div>
+            <div class='workcontainer'>
+                <p style='font-size:25px;font-weight:bold;font-style:italic; text-decoration:underline;'>Chat and Share:</p>
+                <p>Enjoy real-time conversations, share messages, and upload images with your group members. Everything is private and secure.
+                </p>
+            </div>
+            <div class='workcontainer'>
+                <p style='font-size:25px;font-weight:900;font-style:italic;text-decoration:underline;'>Group Disappears: </p>
+                <p>When the last person leaves the group, it automatically disappears, along with all the messages and images shared.
+                </p>
+            </div>
+            <div class='workcontainer'>
+                <p style='font-size:25px;font-weight:bold;font-style:italic;text-decoration:underline;'>Start Fresh:</p>
+                <p>Create new groups anytime for fresh conversations and experiences. Your privacy is always our priority!
+                </p>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</main>
+
+{% endblock content %}

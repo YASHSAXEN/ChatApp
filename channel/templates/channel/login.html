@@ -7,12 +7,17 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'channel/css/login.css' %}" />
+    <style>
+      .icon{
+        color:black;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <header>
         <div class="logo-container">
-          <p id="logo">PokiChat</p>
+          <a href="{% url "home" %}" style='color:black;text-decoration:none;'><p id="logo">PokiChat</p></a>
         </div>
         <div class="buttons">
           <a href="{% url "login" %}"><button id="login-button" class="btn">Login</button></a>
@@ -56,9 +61,9 @@
       </div>
       <footer>
         <div style='display:flex; gap:20px; height:30px; font-size:20px; cursor: pointer;'>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-solid fa-user-tie"></i>
+          <a href="https://www.linkedin.com/in/yash-saxena-1935bb226" target='blank' class="icon"> <i class="fa-brands fa-linkedin"></i></i></a>
+          <a href="mailto:yashsaxena210403@gmail.com" class="icon" target='blank'><i class="fa-regular fa-envelope"></i></a>
+          <a href="https://github.com/YASHSAXEN" class="icon" target='blank'><i class="fa-brands fa-github"></i></a>
         </div>
         <div style='font-size:15px;'>
           All rights are reserved by Yash Saxena, &copy; copywrite - 2024
