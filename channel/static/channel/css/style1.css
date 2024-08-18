@@ -29,13 +29,14 @@ body::-webkit-scrollbar {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: 10px;
+    width: 50%;
     height: 100%;
-    background-image: url('../images/bg-image.jpg');
-    background-size:cover;
+    background-image: url('../images/bg-1.jpg');
+    background-size: 100% 90%;
+    background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.1; 
+    opacity: 1; 
     z-index: -1;
 }
 
@@ -62,7 +63,7 @@ body::-webkit-scrollbar {
 
 .logo a p{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 45px;
+    font-size: 35px;
     font-style:italic;
     font-weight: bolder;
 }
@@ -316,13 +317,18 @@ body::-webkit-scrollbar {
    }
    .left-content{
     padding: 0px!important;
+    width: 70%;
 }
-
+    
    .content a p{
     font-size: 14.5px;
    }
    .buttons div{
     width: 38%;
+}
+.main-containers::before{
+    width: 100%;
+    opacity: 0.25;
 }
 }
 

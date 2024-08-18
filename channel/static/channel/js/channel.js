@@ -21,7 +21,6 @@ for (let index = 0; index < div_element.length; index++) {
 
 
 websocket.addEventListener('open',(event)=>{
-    console.log('open',event)
     setTimeout(()=>{
         scrolltobottom()
     },2000)
@@ -117,12 +116,21 @@ websocket.addEventListener('message',(event)=>{
         node1.innerText = `${data.user}: `;
         const node2 = document.createElement('p');
         node2.classList.add('actual-message');
+        node2.style.padding = '0px';
+        const node4 = document.createElement('abbr');
+        node4.title = 'Click to open the image';
+        const node5 = document.createElement('a');
+        node5.href =  data.url;
+        node5.target = '_blank';
         const node3 = document.createElement('img');
         node3.style.width ='100%';
         node3.style.height ='100%';
+        node3.classList.add('images');
         node3.src = data.url;
         node2.style.backgroundColor = random_color;
-        node2.appendChild(node3);
+        node5.appendChild(node3);
+        node4.appendChild(node5);
+        node2.appendChild(node4);
         para.appendChild(node1);
         para.appendChild(node2);
         chat_box.appendChild(para);
@@ -151,7 +159,6 @@ websocket.addEventListener('message',(event)=>{
 })
 
 button.addEventListener('click',()=>{
-    console.log('button clicked');
     var message = document.querySelector('#message');
     var message_content = message.value;
     console.log(message_content)

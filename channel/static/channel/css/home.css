@@ -10,19 +10,30 @@
     max-height: max-content;
     display: flex;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.herosection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    opacity: 1; 
+    z-index: -1;
 }
 
 .left-content{
-    width: 100%;
+    width: 70%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     padding: 0px 120px 0px 80px;
-    /* background-image: url('../images/bg-image.jpg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat; */
 }
 
 .herosectionheading{
@@ -157,7 +168,6 @@
     align-items: center;
     gap: 15px;
     border-radius: 15px;
-    /* background-color: rgba(230, 224, 221, 0.404); */
 }
 
 .workcontainer i{
@@ -171,22 +181,80 @@
     opacity: 0.8;
 }
 
-/* .herosectionmaindiv{
-    display: flex; flex-direction:column;gap:20px;width: 50%;height: 55%;justify-content: flex-end;margin-top:20px;align-items:center;
-} */
+@media screen and (max-width:1000px) {
+    .herosectionheading{
+        font-size: 55px!important;
+    }
+    .herosectioncontent{
+        line-height: 22px!important;
+    }
+    .herosectionbutton{
+        width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:930px) {
+    .herosectionheading{
+        font-size: 50px!important;
+    }
+    .herosectioncontent{
+        line-height: 20px!important;
+        font-size: 15px;
+    }
+    .herosectionbutton{
+        width: 100px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:880px){
+    .left-content div{
+        width: 80%!important;
+    }
+}
+
+@media screen and (max-width:760px){
+    .left-content div{
+        width: 90%!important;
+    }
+}
 
 @media screen and (max-width:700px) {
     .innerabout{
         width: 75%;
+    }
+    .left-content div{
+        width: 95%!important;
+    }
+    .herosectionheading{
+        font-size: 48px!important;
+    }
+    .herosectioncontent{
+        font-size: 14px;
+    }
+    .left-content{
+        padding-left: 52px;
     }
 }
 @media screen and (max-width:620px) {
     .innerabout{
         width: 80%;
     }
+    .herosectioncontent{
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .herosectionheading{
+        font-size: 45px!important;
+    }
     .workcontainer{
         margin-bottom: 20px;
     }
+    .herosection{
+        justify-content: center;
+    }
+
 }
 @media screen and (max-width:580px) {
     .innerabout{

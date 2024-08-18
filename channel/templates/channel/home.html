@@ -12,12 +12,10 @@
 <main class="main-container">
     <div class='herosection'>
         <div class="left-content">
-            <div style='display: flex; flex-direction:column;gap:30px;width: 50%;height: 75%;justify-content: flex-end;margin-top:20px;align-items:center;' class='herosectionmaindiv'>
+            <div style='display: flex; flex-direction:column;gap:30px;width: 75%;height: 85%;justify-content: flex-end;margin-top:20px;align-items:center;' class='herosectionmaindiv'>
                 <p class='herosectionheading'>PokiChat</p>
                 <p class='herosectioncontent' style='line-height:23px;'>Create and customize private chat groups with ease. Share messages and images with friends in a secure, ephemeral space. Once the last member leaves, the group vanishes—ensuring your conversations remain just between you and your friends. Experience the freedom of private, self-destructing chats today!</p>
-                {% if not status %}
                 <a href="{% url 'signup' %}"><button class='herosectionbutton'>Join Us</button></a>
-                {% endif %}
             </div>
         </div>
     </div>

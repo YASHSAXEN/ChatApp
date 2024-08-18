@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'channel/images/favicon.png' %}" type="image/x-icon">
     <title>{% block title %}Document{% endblock title %}</title>
     {% block style %}
         <link rel="stylesheet" href="{% static 'channel/css/style1.css' %}">
@@ -62,7 +63,7 @@
         <p>This is the Base page</p>
         {% endblock content %}
     </div>
-{% comment %} <script src="{% static 'blog/js/script.js' %}"></script>
-<script src="{% static 'blog/js/buttons.js' %}"></script> {% endcomment %}
+<script src="{% static 'channel/js/script.js' %}"></script>
+<script src="{% static 'channel/js/buttons.js' %}"></script>
 </body>
 </html>

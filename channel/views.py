@@ -35,10 +35,17 @@ def homepage(request,groupname):
             chat = ChatMessages.objects.filter(groupname=group.id)
         else:
             present_time = datetime.now()
-            last_active_time = datetime.strptime(group.last_active,'%Y-%m-%d %H:%M:%S')
-            # Calculate the difference
+            # last_active_time = datetime.strptime(group.last_active,'%Y-%m-%d %H:%M:%S')
+            last_active_time = group.last_active
             print(present_time)
             print(last_active_time)
+            try:
+                date_format = "%Y-%m-%d %H:%M:%S"
+                last_active_time = datetime.strptime(last_active_time, date_format)
+            except:
+                ate_format = "%Y-%m-%d %H:%M:%S.%f"
+                last_active_time = datetime.strptime(last_active_time, date_format)
+            # Calculate the difference
             time_difference = present_time - last_active_time
             # Convert the difference to seconds
             difference_seconds = time_difference.total_seconds()
