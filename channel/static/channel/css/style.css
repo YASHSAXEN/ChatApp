@@ -166,6 +166,6 @@ input[type='file']{
 @media screen and (max-width:500px) {
   .buttons{
     justify-content: flex-end!important;
-    padding-right: 5px!important;
+    padding-right: 30px!important;
   }
 }
