@@ -43,7 +43,7 @@ def homepage(request,groupname):
                 date_format = "%Y-%m-%d %H:%M:%S"
                 last_active_time = datetime.strptime(last_active_time, date_format)
             except:
-                ate_format = "%Y-%m-%d %H:%M:%S.%f"
+                date_format = "%Y-%m-%d %H:%M:%S.%f"
                 last_active_time = datetime.strptime(last_active_time, date_format)
             # Calculate the difference
             time_difference = present_time - last_active_time
